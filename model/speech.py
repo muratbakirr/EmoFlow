@@ -16,11 +16,6 @@ from tensorflow.keras.models import load_model
 import warnings
 warnings.filterwarnings('ignore')
 
-base_path = os.path.dirname(os.path.abspath(__file__))
-
-# Define the paths relative to the script's directory
-data_path = os.path.join(base_path, '../data/last_features.csv')
-model_path = os.path.join(base_path, '../model/last_version_model.h5')
 
 
 def main(args):
@@ -96,8 +91,8 @@ def predict(t, model_path, encoder):
 def parse_arg():
   parser = argparse.ArgumentParser()
 
-  parser.add_argument('--feauture_path', type=str, default=data_path)
-  parser.add_argument('--model_path', type=str, default=model_path)
+  parser.add_argument('--feauture_path', type=str, default='./data/last_features.csv')
+  parser.add_argument('--model_path', type=str, default='./model/last_version_model.h5')
   parser.add_argument('--path', type=str, dest='path')
 
   args = parser.parse_args()
