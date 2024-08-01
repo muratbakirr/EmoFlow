@@ -4,7 +4,5 @@ scikit_learn==1.3.2
 streamlit==1.37.0
 streamlit_audiorec==0.1.3
 tensorflow==2.15.0
-torch==2.3.1+cu121
 torchaudio==2.3.1+cu121
-torchvision==0.18.1+cu121
 stable_audio_tools==0.0.16
