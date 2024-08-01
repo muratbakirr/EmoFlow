@@ -104,14 +104,6 @@ def generate_prompt(emotion):
     else:
         return 'Emotion not recognized.'
 
-# Define the base path (the directory containing your_script.py)
-base_path = os.path.dirname(os.path.abspath(__file__))
-
-data_path = os.path.join(base_path, '../data/last_features.csv')
-speech_model = os.path.join(base_path, '../model/speech.py')
-yolo_model_path = os.path.join(base_path, '../yolov9/detect.py')
-weight_path = os.path.join(base_path, '../best.pt')
-
 def main():
     st.markdown("""
         <h1 style='text-align: center; font-size: 3em;'>
@@ -149,11 +141,11 @@ def main():
               # Perform emotion detection
               # Define the command to run
               command = [
-                  "python", yolo_model_path,
+                  "python", './yolov9/detect.py',
                   "--img", "640",
                   "--conf", "0.1",
                   "--device", "0",
-                  "--weights", weight_path,
+                  "--weights", './best.pt',
                   "--source", temp_file_path
               ]
 
@@ -191,11 +183,11 @@ def main():
                 # Perform emotion detection
                 # Define the command to run
                 command = [
-                    "python", yolo_model_path,
+                    "python", './yolov9/detect.py',
                     "--img", "640",
                     "--conf", "0.1",
                     "--device", "0",
-                    "--weights", weight_path,
+                    "--weights", './best.pt',
                     "--source", temp_file_path
                 ]
 
@@ -234,7 +226,7 @@ def main():
               
               # Define the command to run
               command = [
-                  "python", speech_model,
+                  "python", './model/speech.py',
                   "--path", temp_file_path
               ]
 
@@ -262,7 +254,7 @@ def main():
               
               # Define the command to run
               command = [
-                  "python", speech_model,
+                  "python", './model/speech.py',
                   "--path", temp_file_path
               ]
 
