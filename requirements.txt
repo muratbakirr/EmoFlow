@@ -3,4 +3,4 @@ streamlit
 streamlit_audiorec==0.1.3
 stable_audio_tools
 soundfile
-audiotools
+git+https://github.com/descriptinc/audiotools
