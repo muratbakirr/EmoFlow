@@ -110,7 +110,7 @@ def main():
             🎵 EmoFlow 🎵
         </h1>
     """, unsafe_allow_html=True)
-    st.header("Mood-Based Music Recommendation System")
+    st.header("Mood-Based Music Generation System")
 
     # Sidebar for user input
     st.sidebar.title("User Input")
