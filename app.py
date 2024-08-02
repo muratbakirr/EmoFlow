@@ -15,14 +15,14 @@ from st_audiorec import st_audiorec
 
 login(token="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")
 
-# device = "cuda" if torch.cuda.is_available() else "cpu"
+device = "cuda" if torch.cuda.is_available() else "cpu"
 
-# # Download model
-# model, model_config = get_pretrained_model("stabilityai/stable-audio-open-1.0")
-# sample_rate = model_config["sample_rate"]
-# sample_size = model_config["sample_size"]
+# Download model
+model, model_config = get_pretrained_model("stabilityai/stable-audio-open-1.0")
+sample_rate = model_config["sample_rate"]
+sample_size = model_config["sample_size"]
 
-# model = model.to(device)
+model = model.to(device)
 
 
 prompt_templates = {
