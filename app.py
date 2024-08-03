@@ -106,21 +106,32 @@ def generate_prompt(emotion):
 
 def main():
     st.markdown("""
-        <h1 style='text-align: center; font-size: 3em;'>
-            🎵 EmoFlow 🎵
-        </h1>
-    """, unsafe_allow_html=True)
-    st.header("Mood-Based Music Generation System")
-
+    <h1 style='text-align: center; font-size: 3em;'>
+         <span style='color: red;'>E</span>
+        <span style='color: orange;'>m</span>
+        <span style='color: yellow;'>o</span>
+        <span style='color: green;'>F</span>
+        <span style='color: blue;'>l</span>
+        <span style='color: indigo;'>o</span>
+        <span style='color: violet;'>w</span> 
+    </h1>
+""", unsafe_allow_html=True)
+    
+    st.sidebar.header("Mood-Based Music Generation")
+    st.sidebar.write('The system leverages facial and speech emotion recognition to deliver personalized music.')
+    st.divider()
+    st.sidebar.divider()
     # Sidebar for user input
-    st.sidebar.title("User Input")
+    st.sidebar.markdown(":red[User Input]")
     user_choice = st.sidebar.selectbox("Choose an option", ["Facial Emotion Detection", "Speech Emotion Recognition"])
 
+    st.sidebar.divider()
+    st.sidebar.markdown(':orange[Music is the universal language of mankind; it speaks to our emotions when words cannot.]')
     # Placeholder for results
-    st.write("## Results")
+    #st.write("## Results")
 
     if user_choice == "Facial Emotion Detection":
-        st.write("Facial Emotion Detection functionality here")
+        st.markdown(":green[Let me see you..] :eyes:")
         # Placeholder for file uploader
         user_select = st.selectbox("Choose an option", ["Upload an Image", "Take a Photo"])
 
@@ -130,7 +141,8 @@ def main():
           if uploaded_file is not None:
               # Process the uploaded image file here
               st.image(uploaded_file, caption="Uploaded Image", use_column_width=True)
-              st.write("Detecting emotion...")
+              st.markdown("Recognizing emotion :rocket:")
+              st.divider()
 
               # Save the uploaded file temporarily
               with tempfile.NamedTemporaryFile(delete=False, suffix=".jpg") as temp_file:
@@ -149,13 +161,19 @@ def main():
                   "--source", temp_file_path
               ]
 
-                      # Run the command and capture the output
+              # Run the command and capture the output
               result = subprocess.run(command, capture_output=True, text=True)
 
               # Get the standard output
               detected_emotion = result.stdout
-              st.write(f"You look like {detected_emotion} today!")
-              # Display the detected emotion and recommended music
+              
+              st.markdown(f"See you :red[{detected_emotion}] today!")
+              
+              
+
+
+                
+                # Display the detected emotion and recommended music
 
         elif user_select == "Take a Photo":
             # Placeholder for file uploader
@@ -172,7 +190,7 @@ def main():
             # if camera is not None:
             #     # Process the camera input here
                 st.image(img_file_buffer, caption="Camera Input", use_column_width=True)
-                st.write("Detecting emotion...")
+                st.markdown("Recognizing emotion :rocket:")
 
                 # Save the camera input temporarily
                 with tempfile.NamedTemporaryFile(delete=False, suffix=".jpg") as temp_file:
@@ -196,14 +214,14 @@ def main():
 
                 # Get the standard output
                 detected_emotion = result.stdout
-                st.write(f"You look like {detected_emotion} today!")
+                st.markdown(f"See you :red[{detected_emotion}] today!")
                 # Display the detected emotion and recommended music
                 
             
 
 
     elif user_choice == "Speech Emotion Recognition":
-        st.write("Speech Emotion Recognition functionality here")
+        st.markdown(":green[Let me hear you..] :headphones:")
         # Placeholder for file uploader
         user_select = st.selectbox("Choose an option", ["Upload an audio file", "Record an Audio"])
 
@@ -215,7 +233,7 @@ def main():
           if uploaded_audio is not None:
               # Process the uploaded audio file here
               st.audio(uploaded_audio, format="audio/wav")
-              st.write("Detecting emotion...")
+              st.markdown("Recognizing emotion :rocket:")
 
               # Save the uploaded file temporarily
               with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as temp_file:
@@ -236,14 +254,14 @@ def main():
               detected_emotion = result.stdout
               detected_emotion_1 = detected_emotion.splitlines()[-1]
               
-              st.write(f"You look like {detected_emotion_1} today!")
+              st.markdown(f"See you :red[{detected_emotion_1}] today!")
               # Display the detected emotion and recommended music
           
         elif user_select == "Record an Audio":
           audio_bytes = st_audiorec()
           if audio_bytes is not None:
               #st.audio(audio_bytes, format="audio/wav")
-              st.write("Detecting emotion...")
+              st.markdown("Recognizing emotion :rocket:")
 
                 # Save the uploaded file temporarily
               with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as temp_file:
@@ -264,24 +282,25 @@ def main():
               detected_emotion = result.stdout
               detected_emotion_1 = detected_emotion.splitlines()[-1]
               
-              st.write(f"You look like {detected_emotion_1} today!")
+              st.markdown(f"See you :red[{detected_emotion_1}] today!")
               # Display the detected emotion and recommended music
 
-
-
+    st.markdown('Let me generate a music for you :notes:')
+    st.markdown(':point_down:')
+    
     # Add a button for generating music
     if st.button("Generate Music"):
-        st.write("Generating music based on detected emotion...")
+        st.markdown("Generating music based on detected emotion :rocket:")
         if detected_emotion is not None:
           if user_choice == "Facial Emotion Detection":
             # Generate music based on detected emotion
             prompt = generate_prompt(detected_emotion.split('\n')[0])
-            st.write(f"Music Prompt: {prompt}")
+            
           
           elif user_choice == "Speech Emotion Recognition":
             # Generate music based on detected emotion
             prompt = generate_prompt(detected_emotion.splitlines()[-1])
-            st.write(f"Music Prompt: {prompt}")
+            
           else:
             st.write("Prompt not generated.")
 
