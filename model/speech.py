@@ -13,9 +13,6 @@ from sklearn.model_selection import train_test_split
 import argparse
 from sklearn.preprocessing import StandardScaler
 from tensorflow.keras.models import load_model
-import warnings
-warnings.filterwarnings('ignore')
-
 
 
 def main(args):
