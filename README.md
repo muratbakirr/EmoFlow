@@ -1,6 +1,9 @@
 # EmoFlow
 ## Mood-Based Music Generation with Facial and Speech Emotion Recognition
 
+![Blank diagram (1)](https://github.com/user-attachments/assets/de64a8b8-8c4f-4e86-8de6-7b7a25a63103)
+
+
 [streamlit-app-demo](https://github.com/user-attachments/assets/a3979c58-313e-44fc-900a-96300b2aa566)
 
 ## ⭐  Quick Start  ⭐
