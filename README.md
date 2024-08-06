@@ -5,7 +5,7 @@ interactive experience. The integration of advanced emotion
 detection technologies with sophisticated music generation
 algorithms creates a system that adapts to users’ emotional
 states in real-time, offering personalized and enjoyable music
-generation
+generation.
 
 ![Blank diagram (1)](https://github.com/user-attachments/assets/de64a8b8-8c4f-4e86-8de6-7b7a25a63103)
 
