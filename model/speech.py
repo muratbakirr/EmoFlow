@@ -8,11 +8,15 @@ import librosa.display
 from IPython.display import Audio
 import os
 import librosa
+import sklearn
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import train_test_split
 import argparse
+import tensorflow as tf
 from sklearn.preprocessing import StandardScaler
 from tensorflow.keras.models import load_model
+import warnings
+warnings.filterwarnings('ignore')
 
 
 def main(args):
@@ -88,8 +92,8 @@ def predict(t, model_path, encoder):
 def parse_arg():
   parser = argparse.ArgumentParser()
 
-  parser.add_argument('--feauture_path', type=str, default='./data/last_features.csv')
-  parser.add_argument('--model_path', type=str, default='./model/last_version_model.h5')
+  parser.add_argument('--feauture_path', type=str, default='/content/drive/MyDrive/EmoFlow/speech_data/last_features.csv')
+  parser.add_argument('--model_path', type=str, default='/content/drive/MyDrive/EmoFlow/speech_data/last_version_model.h5')
   parser.add_argument('--path', type=str, dest='path')
 
   args = parser.parse_args()
